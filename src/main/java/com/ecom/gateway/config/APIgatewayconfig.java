@@ -19,7 +19,7 @@ public class APIgatewayconfig {
 		return builder.routes()
 				       .route(r -> r.path("order-service","/api/v1/order/**" , "/api/v1/order/placeorder")
 				       .filters(f -> f.addRequestHeader("orderservice", "yes"))
-				        .uri("http://localhost:8082") )
+				        .uri("lb://orderservice") )
 				        .build();
 
 	}
@@ -33,7 +33,7 @@ public class APIgatewayconfig {
 		return builder.routes()
 				       .route(r -> r.path("product-service","/api/v1/products/**")
 				       .filters(f -> f.addRequestHeader("productservice", "yes"))
-				        .uri("http://localhost:8080") )
+				        .uri("lb://productservice") )
 				        .build();
 
 	}
@@ -47,7 +47,7 @@ public class APIgatewayconfig {
 		return builder.routes()
 				       .route(r -> r.path("product-service","/api/v1/customers/**")
 				       .filters(f -> f.addRequestHeader("customerservice", "yes"))
-				        .uri("http://localhost:8081") )
+				        .uri("lb://customerservice") )
 				        .build();
 
 	}
