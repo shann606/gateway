@@ -13,7 +13,6 @@ public class APIgatewayconfig {
 	
 	@Bean
 	public RouteLocator localOrderoute(RouteLocatorBuilder builder) {
-		// TODO Auto-generated method stub
 		
 		// need to add routes later.
 		return builder.routes()
@@ -27,8 +26,6 @@ public class APIgatewayconfig {
 	
 	@Bean
 	public RouteLocator localProductRoute(RouteLocatorBuilder builder) {
-		// TODO Auto-generated method stub
-		
 		// need to add routes later.
 		return builder.routes()
 				       .route(r -> r.path("product-service","/api/v1/products/**")
@@ -41,14 +38,23 @@ public class APIgatewayconfig {
 	
 	@Bean
 	public RouteLocator localCustomerRoute(RouteLocatorBuilder builder) {
-		// TODO Auto-generated method stub
 		
 		// need to add routes later.
 		return builder.routes()
-				       .route(r -> r.path("product-service","/api/v1/customers/**")
+				       .route(r -> r.path("customer-service","/api/v1/customers/**")
 				       .filters(f -> f.addRequestHeader("customerservice", "yes"))
 				        .uri("lb://customerservice") )
 				        .build();
 
+	}
+	
+	@Bean
+	public RouteLocator  localPaymentRoute(RouteLocatorBuilder builder) {
+		return builder.routes()
+	       .route(r -> r.path("payment-service","/api/v1/payments/**")
+	       .filters(f -> f.addRequestHeader("paymentservice", "yes"))
+	        .uri("lb://paymentservice") )
+	        .build();
+		
 	}
 }
