@@ -86,7 +86,7 @@
 							<port>9090</port>
 						</ports>
 						<environment>
-							<SPRING_PROFILES_ACTIVE>default</SPRING_PROFILES_ACTIVE>
+							<SPRING_PROFILES_ACTIVE>local-secure</SPRING_PROFILES_ACTIVE>
 						</environment>
 						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
 					</container>
