@@ -8,15 +8,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class APIgatewayconfig {
-	
-	
-	
-	@Bean
-	public RouteLocator localOrderoute(RouteLocatorBuilder builder) {
+
+
+    @Bean
+    RouteLocator localOrderoute(RouteLocatorBuilder builder) {
 		
 		// need to add routes later.
 		return builder.routes()
-				       .route(r -> r.path("order-service","/api/v1/order/**" , "/api/v1/order/placeorder")
+				       .route(r -> r.path("order-service","/api/v1/orders/**")
 				       .filters(f -> f.addRequestHeader("orderservice", "yes"))
 				        .uri("lb://orderservice") )
 				        .build();
@@ -25,10 +24,10 @@ public class APIgatewayconfig {
 	
 	
 	@Bean
-	public RouteLocator localProductRoute(RouteLocatorBuilder builder) {
+	 RouteLocator localProductRoute(RouteLocatorBuilder builder) {
 		// need to add routes later.
 		return builder.routes()
-				       .route(r -> r.path("product-service","/api/v1/products/**")
+				       .route(r -> r.path("product-service","/api/v1/categories/**")
 				       .filters(f -> f.addRequestHeader("productservice", "yes"))
 				        .uri("lb://productservice") )
 				        .build();
@@ -37,7 +36,7 @@ public class APIgatewayconfig {
 	
 	
 	@Bean
-	public RouteLocator localCustomerRoute(RouteLocatorBuilder builder) {
+	 RouteLocator localCustomerRoute(RouteLocatorBuilder builder) {
 		
 		// need to add routes later.
 		return builder.routes()
@@ -49,7 +48,7 @@ public class APIgatewayconfig {
 	}
 	
 	@Bean
-	public RouteLocator  localPaymentRoute(RouteLocatorBuilder builder) {
+	 RouteLocator  localPaymentRoute(RouteLocatorBuilder builder) {
 		return builder.routes()
 	       .route(r -> r.path("payment-service","/api/v1/payments/**")
 	       .filters(f -> f.addRequestHeader("paymentservice", "yes"))
